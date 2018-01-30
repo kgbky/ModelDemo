@@ -4,7 +4,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.LruCache;
 import android.widget.ImageView;
 
 import java.net.HttpURLConnection;
@@ -14,13 +13,16 @@ import java.util.concurrent.Executors;
 
 /**
  * Created by Administrator on 2018/1/30    10:19
+ *
+ * @author Administrator
  */
 
 public class ImageLoader {
+
     /**
-     * 图片缓存
+     * 缓存控制器
      */
-    LruCache<String, Bitmap> mImageCache;
+    private ImageCache imageCache;
     /**
      * 线程池，线程数量为cpu的数量
      */
@@ -31,23 +33,20 @@ public class ImageLoader {
     Handler mUIHandler = new Handler(Looper.getMainLooper());
 
     public ImageLoader() {
-        initImageCache();
+        imageCache = new DoubleCache();
     }
 
-    private void initImageCache() {
-        //可使用的内存大小
-        int maxMemory = (int) (Runtime.getRuntime().maxMemory() / 1024);
-        //缓存大小为可用内存的四分之一
-        int cacheSize = maxMemory / 4;
-        mImageCache = new LruCache<String, Bitmap>(cacheSize) {
-            @Override
-            protected int sizeOf(String key, Bitmap value) {
-                return value.getRowBytes() * value.getHeight() / 1024;
-            }
-        };
+    public void setImageCache(ImageCache imageCache) {
+        this.imageCache = imageCache;
     }
 
     public void displayImage(final String url, final ImageView imageView) {
+        Bitmap bitmap = imageCache.get(url);
+        if (bitmap != null) {
+            updateImageView(imageView, bitmap);
+            return;
+        }
+
         imageView.setTag(url);
         mExecutorService.submit(new Runnable() {
             @Override
@@ -59,7 +58,7 @@ public class ImageLoader {
                 if (imageView.getTag().equals(url)) {
                     updateImageView(imageView, bitmap);
                 }
-                mImageCache.put(url, bitmap);
+                imageCache.put(url, bitmap);
             }
         });
     }
