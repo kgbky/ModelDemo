@@ -4,13 +4,13 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
 import java.io.FileOutputStream;
-import java.io.IOException;
 
 /**
  * Created by Administrator on 2018/1/30    14:12
  */
 
-public class DiskCache implements ImageCache{
+public class DiskCache implements ImageCache {
+
     final static String CACHE_DIR = "sdcard/cache/";
 
     public Bitmap get(String url) {
@@ -25,13 +25,7 @@ public class DiskCache implements ImageCache{
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if (fileOutputStream != null) {
-                try {
-                    fileOutputStream.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+            CloseUtils.close(fileOutputStream);
         }
     }
 

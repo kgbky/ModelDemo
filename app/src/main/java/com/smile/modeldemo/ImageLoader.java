@@ -32,8 +32,20 @@ public class ImageLoader {
      */
     Handler mUIHandler = new Handler(Looper.getMainLooper());
 
-    public ImageLoader() {
+    private static ImageLoader imageLoader;
+
+    private ImageLoader() {
         imageCache = new DoubleCache();
+    }
+
+    /**
+     * 懒汉式 每次都需要同步开销
+     */
+    public static synchronized ImageLoader getInstance() {
+        if (imageLoader == null) {
+            imageLoader = new ImageLoader();
+        }
+        return imageLoader;
     }
 
     public void setImageCache(ImageCache imageCache) {
