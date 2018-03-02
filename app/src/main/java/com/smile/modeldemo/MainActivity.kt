@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import com.smile.modeldemo.adapter.m1.PrintBanner
-import com.smile.modeldemo.factory.TvFactory
+import com.smile.modeldemo.factory.IDCardFactory
 import com.smile.modeldemo.iterator.Book
 import com.smile.modeldemo.iterator.Bookshelf
 import com.smile.modeldemo.singleton.Singleton
@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity() {
         bookShelf.appendBook(Book("third book"))
         bookShelf.appendBook(Book("forth book"))
         val it = bookShelf.iterator()
+
         while (it.hasNext()) {
             val book: Book = it.next() as Book
             Log.d("book", book.name)
@@ -71,21 +72,21 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun testFactory() {
-//        val idCardFactory = IDCardFactory()
-//        val id1 = idCardFactory.create("小明")
-//        val id2 = idCardFactory.create("小红")
-//        val id3 = idCardFactory.create("小刚")
-//        id1.use()
-//        id2.use()
-//        id3.use()
+        val idCardFactory = IDCardFactory()
+        val id1 = idCardFactory.create("小明")
+        val id2 = idCardFactory.create("小红")
+        val id3 = idCardFactory.create("小刚")
+        id1.use()
+        id2.use()
+        id3.use()
 
-        val tvFactory = TvFactory()
-        val tv1 = tvFactory.create("小明")
-        val tv2 = tvFactory.create("小红")
-        val tv3 = tvFactory.create("小刚")
-        tv1.use()
-        tv2.use()
-        tv3.use()
+//        val tvFactory = TvFactory()
+//        val tv1 = tvFactory.create("小明")
+//        val tv2 = tvFactory.create("小红")
+//        val tv3 = tvFactory.create("小刚")
+//        tv1.use()
+//        tv2.use()
+//        tv3.use()
     }
 
 }

@@ -6,14 +6,15 @@ package com.smile.modeldemo.factory;
 
 public class IDCardFactory extends Factory {
 
+    private long i;
+
     @Override
     public Product createProduct(String owner) {
-        return new IDCard(owner);
+        return new IDCard(owner, i++);
     }
 
     @Override
     public void registerProduct(Product product) {
-
     }
 
 }

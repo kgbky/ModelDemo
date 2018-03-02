@@ -11,9 +11,11 @@ public class IDCard extends Product {
     private static final String TAG = "factory";
 
     private String owner;
+    private long cardNumber;
 
-    public IDCard(String owner) {
+    IDCard(String owner, long cardNumber) {
         this.owner = owner;
+        this.cardNumber = cardNumber;
     }
 
     @Override
@@ -24,4 +26,9 @@ public class IDCard extends Product {
     public String getOwner() {
         return owner;
     }
+
+    public long getCardNumber() {
+        return cardNumber;
+    }
+
 }
