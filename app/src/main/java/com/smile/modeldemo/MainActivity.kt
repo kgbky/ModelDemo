@@ -21,12 +21,13 @@ class MainActivity : AppCompatActivity() {
 //        imageLoader.setImageCache(DoubleCache())
 //        imageLoader.displayImage("http://pic4.nipic.com/20091217/3885730_124701000519_2.jpg", imageView)
 
-//        testIterator()
+        testIterator()
+        testStrongIterator()
 //        testAdapter()
 //        testAdapter2()
 //        testSingleton()
 //        testTemplate()
-        testFactory()
+//        testFactory()
     }
 
     private fun testIterator() {
@@ -39,6 +40,19 @@ class MainActivity : AppCompatActivity() {
 
         while (it.hasNext()) {
             val book: Book = it.next() as Book
+            Log.d("book", book.name)
+        }
+    }
+
+    private fun testStrongIterator() {
+        val bookShelf = Bookshelf()
+        bookShelf.appendBook(Book("first book"))
+        bookShelf.appendBook(Book("second book"))
+        bookShelf.appendBook(Book("third book"))
+        bookShelf.appendBook(Book("forth book"))
+        val it = bookShelf.strongIterator()
+        while (it.hasPrevious()) {
+            val book = it.previous() as Book
             Log.d("book", book.name)
         }
     }

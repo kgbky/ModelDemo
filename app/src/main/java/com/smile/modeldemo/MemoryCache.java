@@ -5,10 +5,11 @@ import android.util.LruCache;
 
 /**
  * Created by Administrator on 2018/1/30    11:35
+ *
  * @author Administrator
  */
 
-public class MemoryCache implements ImageCache{
+public class MemoryCache implements ImageCache {
     /**
      * 图片缓存
      */
@@ -20,7 +21,8 @@ public class MemoryCache implements ImageCache{
 
     private void initImageCache() {
         //可使用的内存大小
-        int maxMemory = (int) (Runtime.getRuntime().maxMemory() / 1024);
+        int maxMemory = (int) (Runtime.getRuntime().maxMemory()
+                / 1024);
         //缓存大小为可用内存的四分之一
         int cacheSize = maxMemory / 4;
         mImageCache = new LruCache<String, Bitmap>(cacheSize) {
