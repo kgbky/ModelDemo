@@ -22,12 +22,16 @@ class MainActivity : AppCompatActivity() {
 //        imageLoader.displayImage("http://pic4.nipic.com/20091217/3885730_124701000519_2.jpg", imageView)
 
         testIterator()
-        testStrongIterator()
+//        testStrongIterator()
 //        testAdapter()
 //        testAdapter2()
 //        testSingleton()
 //        testTemplate()
 //        testFactory()
+
+//        imageView.setOnClickListener { testIterator() }
+
+        //dispatchPointerEvent  dispatchTouchEvent  onTouch() onTouchEvent() perfimClick()
     }
 
     private fun testIterator() {
@@ -101,6 +105,15 @@ class MainActivity : AppCompatActivity() {
 //        tv1.use()
 //        tv2.use()
 //        tv3.use()
+    }
+
+    private fun testHandler(){
+        Thread(Runnable {
+          kotlin.run {
+              Thread.sleep(1000);
+
+          }
+        }).start()
     }
 
 }

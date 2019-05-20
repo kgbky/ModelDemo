@@ -11,6 +11,7 @@ public class BookshelfIterator implements Iterator {
 
     public BookshelfIterator(Bookshelf bookshelf) {
         this.bookshelf = bookshelf;
+        this.index = 0;
     }
 
     @Override
