@@ -11,6 +11,7 @@ public abstract class Factory {
 
     public abstract void registerProduct(Product product);
 
+    //工厂方法
     public final Product create(String owner) {
         Product product = createProduct(owner);
         registerProduct(product);

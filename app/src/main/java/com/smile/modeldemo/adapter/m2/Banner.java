@@ -4,6 +4,8 @@ import android.util.Log;
 
 /**
  * Created by Administrator on 2018/2/5    10:07
+ * <p>
+ * 实际情况
  */
 
 public class Banner {

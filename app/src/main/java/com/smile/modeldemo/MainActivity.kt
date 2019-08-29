@@ -3,6 +3,8 @@ package com.smile.modeldemo
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import com.smile.modeldemo.adapter.exercise.FileIO
+import com.smile.modeldemo.adapter.exercise.FileProperties
 import com.smile.modeldemo.adapter.m1.PrintBanner
 import com.smile.modeldemo.factory.IDCardFactory
 import com.smile.modeldemo.iterator.Book
@@ -11,8 +13,11 @@ import com.smile.modeldemo.singleton.Singleton
 import com.smile.modeldemo.templateMethod.AbstractDisplay
 import com.smile.modeldemo.templateMethod.CharDisplay
 import com.smile.modeldemo.templateMethod.StringDisplay
+import java.io.InputStream
 
 class MainActivity : AppCompatActivity() {
+
+    val TAG = "1993"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,13 +26,16 @@ class MainActivity : AppCompatActivity() {
 //        imageLoader.setImageCache(DoubleCache())
 //        imageLoader.displayImage("http://pic4.nipic.com/20091217/3885730_124701000519_2.jpg", imageView)
 
-        testIterator()
+//        testIterator()
 //        testStrongIterator()
 //        testAdapter()
 //        testAdapter2()
-//        testSingleton()
+//        exeAdapter()
+
 //        testTemplate()
-//        testFactory()
+        testFactory()
+
+//        testSingleton()
 
 //        imageView.setOnClickListener { testIterator() }
 
@@ -74,6 +82,23 @@ class MainActivity : AppCompatActivity() {
         print.printStrong()
     }
 
+    fun exeAdapter() {
+        val newPath = filesDir.path + "/oldPath"
+        var fileIO: FileIO
+        fileIO = FileProperties()
+
+//        fileIO.setValue("year", "2019")
+//        fileIO.setValue("month", "08")
+//        fileIO.setValue("day", "10000")
+//        fileIO.writeToFile(newPath)
+
+        fileIO.readFromFile(newPath)
+        val year = fileIO.getValue("year")
+        val month = fileIO.getValue("month")
+        val day = fileIO.getValue("day")
+        Log.d(TAG, year + month + day)
+    }
+
     fun testSingleton(): Unit {
         Singleton.getInstance()
         Singleton.getInstance()
@@ -105,15 +130,6 @@ class MainActivity : AppCompatActivity() {
 //        tv1.use()
 //        tv2.use()
 //        tv3.use()
-    }
-
-    private fun testHandler(){
-        Thread(Runnable {
-          kotlin.run {
-              Thread.sleep(1000);
-
-          }
-        }).start()
     }
 
 }
