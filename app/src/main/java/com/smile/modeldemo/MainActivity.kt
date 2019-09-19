@@ -3,17 +3,20 @@ package com.smile.modeldemo
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.view.View
+import android.widget.TextView
 import com.smile.modeldemo.adapter.exercise.FileIO
 import com.smile.modeldemo.adapter.exercise.FileProperties
 import com.smile.modeldemo.adapter.m1.PrintBanner
 import com.smile.modeldemo.factory.IDCardFactory
 import com.smile.modeldemo.iterator.Book
 import com.smile.modeldemo.iterator.Bookshelf
+import com.smile.modeldemo.prototype.MessageBox
+import com.smile.modeldemo.prototype.framework.Manager
 import com.smile.modeldemo.singleton.Singleton
 import com.smile.modeldemo.templateMethod.AbstractDisplay
 import com.smile.modeldemo.templateMethod.CharDisplay
 import com.smile.modeldemo.templateMethod.StringDisplay
-import java.io.InputStream
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,13 +36,15 @@ class MainActivity : AppCompatActivity() {
 //        exeAdapter()
 
 //        testTemplate()
-        testFactory()
+//        testFactory()
 
 //        testSingleton()
 
 //        imageView.setOnClickListener { testIterator() }
 
         //dispatchPointerEvent  dispatchTouchEvent  onTouch() onTouchEvent() perfimClick()
+
+        findViewById<TextView>(R.id.tv_hello).setOnClickListener { testPrototype() }
     }
 
     private fun testIterator() {
@@ -130,6 +135,13 @@ class MainActivity : AppCompatActivity() {
 //        tv1.use()
 //        tv2.use()
 //        tv3.use()
+    }
+
+    private fun testPrototype() {
+        var m = Manager()
+        m.register("box", MessageBox('/'))
+
+        m.create("box").use("hello")
     }
 
 }

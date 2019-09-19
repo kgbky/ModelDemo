@@ -7,11 +7,13 @@ package com.smile.modeldemo.factory;
 
 public abstract class Factory {
 
+    //工厂方法
     public abstract Product createProduct(String owner);
 
+    //工厂方法
     public abstract void registerProduct(Product product);
 
-    //工厂方法
+    //模板方法，模板设计模式
     public final Product create(String owner) {
         Product product = createProduct(owner);
         registerProduct(product);
