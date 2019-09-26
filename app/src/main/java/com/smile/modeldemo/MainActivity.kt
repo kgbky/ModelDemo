@@ -3,11 +3,13 @@ package com.smile.modeldemo
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
-import android.view.View
 import android.widget.TextView
 import com.smile.modeldemo.adapter.exercise.FileIO
 import com.smile.modeldemo.adapter.exercise.FileProperties
 import com.smile.modeldemo.adapter.m1.PrintBanner
+import com.smile.modeldemo.builder.Director
+import com.smile.modeldemo.builder.TextBuilder
+import com.smile.modeldemo.builder.XBuilder
 import com.smile.modeldemo.factory.IDCardFactory
 import com.smile.modeldemo.iterator.Book
 import com.smile.modeldemo.iterator.Bookshelf
@@ -44,7 +46,7 @@ class MainActivity : AppCompatActivity() {
 
         //dispatchPointerEvent  dispatchTouchEvent  onTouch() onTouchEvent() perfimClick()
 
-        findViewById<TextView>(R.id.tv_hello).setOnClickListener { testPrototype() }
+        findViewById<TextView>(R.id.tv_hello).setOnClickListener { testBuilder() }
     }
 
     private fun testIterator() {
@@ -142,6 +144,18 @@ class MainActivity : AppCompatActivity() {
         m.register("box", MessageBox('/'))
 
         m.create("box").use("hello")
+    }
+
+    private fun testBuilder() {
+        var textBuilder = TextBuilder()
+        var xBuilder = XBuilder()
+
+        var director = Director(xBuilder)
+        director.construct()
+
+        //验证结果
+        var result = textBuilder.result
+        Log.d("abc", result)
     }
 
 }
