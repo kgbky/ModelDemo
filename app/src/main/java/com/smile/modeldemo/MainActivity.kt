@@ -11,6 +11,7 @@ import com.smile.modeldemo.builder.Director
 import com.smile.modeldemo.builder.TextBuilder
 import com.smile.modeldemo.builder.XBuilder
 import com.smile.modeldemo.factory.IDCardFactory
+import com.smile.modeldemo.factoryAbs.factory.Factory
 import com.smile.modeldemo.iterator.Book
 import com.smile.modeldemo.iterator.Bookshelf
 import com.smile.modeldemo.prototype.MessageBox
@@ -46,7 +47,10 @@ class MainActivity : AppCompatActivity() {
 
         //dispatchPointerEvent  dispatchTouchEvent  onTouch() onTouchEvent() perfimClick()
 
-        findViewById<TextView>(R.id.tv_hello).setOnClickListener { testBuilder() }
+        findViewById<TextView>(R.id.tv_hello).setOnClickListener {
+//            testBuilder()
+            testAbsFactory()
+        }
     }
 
     private fun testIterator() {
@@ -156,6 +160,24 @@ class MainActivity : AppCompatActivity() {
         //验证结果
         var result = textBuilder.result
         Log.d("abc", result)
+    }
+
+    private fun testAbsFactory() {
+        var factory: Factory? = null
+        factory = Factory.getFactory("com.smile.modeldemo.factoryAbs.listfactory.ListFactory")
+
+        val people = factory.createLink("人民日报", "")
+        val gmw = factory.createLink("光明日报", "")
+        val google = factory.createLink("GOOGLE", "")
+
+        var trayNew = factory.createTray("日报")
+        trayNew.add(people)
+        trayNew.add(gmw)
+
+        var page = factory.createPage("LinkPage", "羽毛")
+        page.add(trayNew)
+        page.add(google)
+        page.output()
     }
 
 }
