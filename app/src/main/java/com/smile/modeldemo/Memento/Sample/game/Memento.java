@@ -9,7 +9,7 @@ public class Memento {
 
     public int getMoney() {                 // 获取当前所持金钱（narrow interface）
         return money;
-    }
+    } // narrow interface
 
     Memento(int money) {                    // 构造函数(wide interface)
         this.money = money;
