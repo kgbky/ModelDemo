@@ -3,6 +3,7 @@ package com.smile.modeldemo.Interpreter.Sample;
 // <primitive command> ::= go | right | left
 public class PrimitiveCommandNode extends Node {
     private String name;
+
     public void parse(Context context) throws ParseException {
         name = context.currentToken();
         context.skipToken(name);
@@ -10,6 +11,7 @@ public class PrimitiveCommandNode extends Node {
             throw new ParseException(name + " is undefined");
         }
     }
+
     public String toString() {
         return name;
     }

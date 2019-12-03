@@ -3,6 +3,7 @@ package com.smile.modeldemo.Interpreter.Sample;
 // <command> ::= <repeat command> | <primitive command>
 public class CommandNode extends Node {
     private Node node;
+
     public void parse(Context context) throws ParseException {
         if (context.currentToken().equals("repeat")) {
             node = new RepeatCommandNode();
@@ -12,6 +13,7 @@ public class CommandNode extends Node {
             node.parse(context);
         }
     }
+
     public String toString() {
         return node.toString();
     }
