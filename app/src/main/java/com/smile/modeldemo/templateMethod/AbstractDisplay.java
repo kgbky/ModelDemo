@@ -12,7 +12,9 @@ public abstract class AbstractDisplay {
     abstract void close();
 
     /**
-     * 抽象出流程 具体实现看子类
+     * 模板方法，抽取公共部分，方便修改公共逻辑。
+     * <p>
+     * 注意final关键字
      */
     public final void display() {
         open();
