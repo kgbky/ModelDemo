@@ -4,10 +4,13 @@ import android.util.Log;
 
 /**
  * Created by Administrator on 2018/2/7    14:11
+ * <p>
+ * 饿汉式
  */
 
 public class Singleton {
     private static final String TAG = "Singleton";
+
     private static Singleton singleton = new Singleton();
 
     private Singleton() {

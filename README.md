@@ -48,7 +48,7 @@ Adapter模式可以在不改变现有代码的情况下，实现新的Api，符�
 TemplateMethod模式用来生产实例，就变成了FactoryMethod模式
 
 #### 5.Prototype(原型)模式
-通过对象来生产实例。使用Object的clone()实现
+通过对象来生产实例。在Java语言中可使用Object的clone()实现
 * clone()是浅拷贝，field_to_field_copy，只复制字段的引用
 
 * clone()不会调用构造方法
