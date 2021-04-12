@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 /**
  * Created by Administrator on 2018/2/2    10:43
+ * <p>
+ * 书架，实现了Aggregate接口，表示可迭代
  */
 
 public class Bookshelf implements Aggregate {
