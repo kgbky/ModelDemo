@@ -1,5 +1,8 @@
 package com.smile.modeldemo.Bridge.Sample;
 
+/**
+ * 类的实现层次结构 二层
+ */
 public class StringDisplayImpl extends DisplayImpl {
     private String string;                              // 要显示的字符串
     private int width;                                  // 以字节单位计算出的字符串的宽度

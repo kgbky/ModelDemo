@@ -1,5 +1,10 @@
 package com.smile.modeldemo.Bridge.Sample;
 
+/**
+ * 类的功能层次结构二级
+ * <p>
+ * multiDisplay() 实现了新功能
+ */
 public class CountDisplay extends Display {
     public CountDisplay(DisplayImpl impl) {
         super(impl);

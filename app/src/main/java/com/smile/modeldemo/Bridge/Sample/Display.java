@@ -1,5 +1,8 @@
 package com.smile.modeldemo.Bridge.Sample;
 
+/**
+ * 类的功能层次结构 最上层
+ */
 public class Display {
     //bridge
     private DisplayImpl impl;
