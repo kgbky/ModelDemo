@@ -2,6 +2,9 @@ package com.smile.modeldemo.factoryAbs.factory;
 
 import java.util.ArrayList;
 
+/**
+ * 抽象零件
+ */
 public abstract class Tray extends Item {
 
     protected ArrayList<Item> list = new ArrayList<>();

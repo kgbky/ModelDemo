@@ -3,6 +3,9 @@ package com.smile.modeldemo.factoryAbs.listfactory;
 import com.smile.modeldemo.factoryAbs.factory.Item;
 import com.smile.modeldemo.factoryAbs.factory.Tray;
 
+/**
+ * 具体的零件
+ */
 public class ListTray extends Tray {
 
     public ListTray(String caption) {

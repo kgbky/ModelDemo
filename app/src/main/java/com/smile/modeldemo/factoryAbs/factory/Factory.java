@@ -1,7 +1,13 @@
 package com.smile.modeldemo.factoryAbs.factory;
 
+/**
+ * 抽象工厂
+ */
 public abstract class Factory {
 
+    /**
+     * 根据指定的类名生成具体的工厂
+     */
     public static Factory getFactory(String className) {
         Factory factory = null;
         try {

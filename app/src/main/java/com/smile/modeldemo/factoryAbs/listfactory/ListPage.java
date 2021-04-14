@@ -3,6 +3,9 @@ package com.smile.modeldemo.factoryAbs.listfactory;
 import com.smile.modeldemo.factoryAbs.factory.Item;
 import com.smile.modeldemo.factoryAbs.factory.Page;
 
+/**
+ * 具体的产品
+ */
 public class ListPage extends Page {
 
     public ListPage(String title, String author) {
