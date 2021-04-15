@@ -6,7 +6,7 @@ import com.smile.modeldemo.factoryAbs.factory.Page;
 import com.smile.modeldemo.factoryAbs.factory.Tray;
 
 /**
- * 具体的工厂
+ * 具体的工厂，网页内容显示为列表
  */
 public class ListFactory extends Factory {
     @Override

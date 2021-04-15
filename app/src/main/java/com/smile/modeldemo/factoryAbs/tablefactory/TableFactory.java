@@ -5,6 +5,9 @@ import com.smile.modeldemo.factoryAbs.factory.Link;
 import com.smile.modeldemo.factoryAbs.factory.Page;
 import com.smile.modeldemo.factoryAbs.factory.Tray;
 
+/**
+ * 具体的工厂，网页内容显示为表格
+ */
 public class TableFactory extends Factory {
     @Override
     public Link createLink(String caption, String url) {
