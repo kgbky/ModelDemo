@@ -7,6 +7,7 @@ public abstract class Display {
 
     public abstract String getRowText(int row);     // 获取第row行的字符串
 
+    //模板方法模式
     public void show() {                            // 全部显示
         for (int i = 0; i < getRows(); i++) {
             System.out.println(getRowText(i));
