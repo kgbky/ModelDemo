@@ -1,5 +1,8 @@
 package com.smile.modeldemo.Proxy.Sample;
 
+/**
+ * Printer 类并不知道 PrinterProxy类的存在
+ */
 public class Printer implements Printable {
     private String name;
 

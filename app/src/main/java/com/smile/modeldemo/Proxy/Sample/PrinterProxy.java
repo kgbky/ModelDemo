@@ -3,7 +3,7 @@ package com.smile.modeldemo.Proxy.Sample;
 public class PrinterProxy implements Printable {
     private String name;            // 名字
     private Printable real;           // “本人”
-    private String className;       // “本人”的类名
+    private Class<? extends Printable> className;       // “本人”的类
 
     public PrinterProxy() {
     }
@@ -12,7 +12,7 @@ public class PrinterProxy implements Printable {
         this.name = name;
     }
 
-    public PrinterProxy(String name, String clz) {      // 构造函数
+    public PrinterProxy(String name, Class<? extends Printable> clz) {      // 构造函数
         this.name = name;
         this.className = clz;
     }
@@ -30,16 +30,15 @@ public class PrinterProxy implements Printable {
 
     public void print(String string) {  // 显示
         realize();
+        //委托给real对象去完成
         real.print(string);
     }
 
     private synchronized void realize() {   // 生成“本人”
         if (real == null) {
             try {
-                real = (Printer) Class.forName(className).newInstance();
+                real = className.newInstance();
                 real.setPrinterName(name);
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
             } catch (InstantiationException e) {
