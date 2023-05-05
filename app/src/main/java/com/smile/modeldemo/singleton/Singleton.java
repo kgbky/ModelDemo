@@ -5,7 +5,7 @@ import android.util.Log;
 /**
  * Created by Administrator on 2018/2/7    14:11
  * <p>
- * 饿汉式
+ * 饿汉式(线程安全)
  */
 
 public class Singleton {

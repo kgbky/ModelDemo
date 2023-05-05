@@ -11,4 +11,11 @@ public abstract interface Builder {
     public abstract void makeItems(String[] items);
 
     public abstract void close();
+
+    /**
+     *  系统源码中的builder模式
+     *  AlertDialog.Builder b=new AlertDialog.Builder(null);
+     *  b.setMessage("niho");
+     *  b.create().show();
+     */
 }

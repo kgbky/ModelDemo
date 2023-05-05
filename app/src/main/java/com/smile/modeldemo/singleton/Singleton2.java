@@ -14,7 +14,7 @@ public class Singleton2 {
     private static Singleton2 ourInstance;
 
     /**
-     * 懒汉式有时需要考虑线程安全问题
+     * synchronized 保证线程安全，锁为 Singleton2.class
      */
     public static synchronized Singleton2 getInstance() {
         if (ourInstance == null) {

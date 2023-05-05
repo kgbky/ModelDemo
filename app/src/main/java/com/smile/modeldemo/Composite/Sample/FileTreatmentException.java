@@ -2,6 +2,7 @@ package com.smile.modeldemo.Composite.Sample;
 
 public class FileTreatmentException extends RuntimeException {
     public FileTreatmentException() {
+        super();
     }
     public FileTreatmentException(String msg) {
         super(msg);
