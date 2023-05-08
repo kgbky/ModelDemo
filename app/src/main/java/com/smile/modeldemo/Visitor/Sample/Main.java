@@ -1,6 +1,8 @@
 package com.smile.modeldemo.Visitor.Sample;
 
 
+import java.util.Iterator;
+
 public class Main {
     public static void main(String[] args) {
         try {
@@ -31,16 +33,16 @@ public class Main {
             tomura.add(new File("game.doc", 400));
             tomura.add(new File("junk.mail", 500));
 
-            rootdir.accept(new ListVisitor());
+//            rootdir.accept(new ListVisitor());
 
             //习题1
-//            FileFindVisitor findVisitor = new FileFindVisitor(".html");
-//            rootdir.accept(findVisitor);
-//            Iterator iterator = findVisitor.getFoundFiles();
-//            while (iterator.hasNext()) {
-//                File file = (File) iterator.next();
-//                System.out.println(file);
-//            }
+            FileFindVisitor findVisitor = new FileFindVisitor(".html");
+            rootdir.accept(findVisitor);
+            Iterator iterator = findVisitor.getFoundFiles();
+            while (iterator.hasNext()) {
+                File file = (File) iterator.next();
+                System.out.println(file);
+            }
         } catch (FileTreatmentException e) {
             e.printStackTrace();
         }

@@ -3,7 +3,7 @@ package com.smile.modeldemo.Decorator.Sample;
 public abstract class Display {
     public abstract int getColumns();               // 获取横向字符数
 
-    public abstract int getRows();                  // 获取纵向行数
+    public abstract int getRows();                  // 获取行数
 
     public abstract String getRowText(int row);     // 获取第row行的字符串
 

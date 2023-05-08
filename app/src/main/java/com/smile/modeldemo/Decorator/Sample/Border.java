@@ -1,5 +1,8 @@
 package com.smile.modeldemo.Decorator.Sample;
 
+/**
+ * 边框
+ */
 public abstract class Border extends Display {
     protected Display display;          // 表示被装饰物
 

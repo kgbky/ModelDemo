@@ -4,6 +4,11 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.widget.TextView
+import com.smile.modeldemo.Decorator.Sample.FullBorder
+import com.smile.modeldemo.Decorator.Sample.SideBorder
+import com.smile.modeldemo.Visitor.Sample.Directory
+import com.smile.modeldemo.Visitor.Sample.File
+import com.smile.modeldemo.Visitor.Sample.FileFindVisitor
 import com.smile.modeldemo.adapter.exercise.FileIO
 import com.smile.modeldemo.adapter.exercise.FileProperties
 import com.smile.modeldemo.adapter.m1.PrintBanner
@@ -49,7 +54,9 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<TextView>(R.id.tv_hello).setOnClickListener {
 //            testBuilder()
-            testAbsFactory()
+//            testAbsFactory()
+//            testVisitor()
+            com.smile.modeldemo.Memento.Sample.Main.main(null)
         }
     }
 
@@ -88,7 +95,7 @@ class MainActivity : AppCompatActivity() {
 
     fun testAdapter2() {
         val print: com.smile.modeldemo.adapter.m2.PrintBanner =
-                com.smile.modeldemo.adapter.m2.PrintBanner("world")
+            com.smile.modeldemo.adapter.m2.PrintBanner("world")
         print.printWeak()
         print.printStrong()
     }
@@ -178,6 +185,55 @@ class MainActivity : AppCompatActivity() {
         page.add(trayNew)
         page.add(google)
         page.output()
+    }
+
+    private fun testDecorator() {
+        val stringDisplay =
+            com.smile.modeldemo.Decorator.Sample.StringDisplay("hello decorator mode ! ")
+//        stringDisplay.show()
+        val sB = SideBorder(stringDisplay, '&')
+        val s2 = FullBorder(sB)
+        s2.show()
+    }
+
+    fun testVisitor() {
+        System.out.println("Making root entries...");
+        val rootdir = Directory("root");
+        val bindir = Directory("bin");
+        val tmpdir = Directory("tmp");
+        val usrdir = Directory("usr");
+        rootdir.add(bindir);
+        rootdir.add(tmpdir);
+        rootdir.add(usrdir);
+        bindir.add(File("vi", 10000));
+        bindir.add(File("latex", 20000));
+//            rootdir.accept(new ListVisitor());
+
+        System.out.println("");
+        System.out.println("Making user entries...");
+        val yuki = Directory("yuki");
+        val hanako = Directory("hanako");
+        val tomura = Directory("tomura");
+        usrdir.add(yuki);
+        usrdir.add(hanako);
+        usrdir.add(tomura);
+        yuki.add(File("diary.html", 100));
+        yuki.add(File("text.html", 1000));
+        yuki.add(File("Composite.java", 200));
+        hanako.add(File("memo.tex", 300));
+        tomura.add(File("game.doc", 400));
+        tomura.add(File("junk.mail", 500));
+
+//            rootdir.accept(new ListVisitor());
+
+        //习题1
+        val findVisitor = FileFindVisitor(".html");
+        rootdir.accept(findVisitor);
+        val iterator = findVisitor.foundFiles
+        while (iterator.hasNext()) {
+            val file = iterator.next()
+            System.out.println(file);
+        }
     }
 
 }
