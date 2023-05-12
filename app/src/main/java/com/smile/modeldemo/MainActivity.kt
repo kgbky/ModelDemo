@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
 //            testBuilder()
 //            testAbsFactory()
 //            testVisitor()
-            com.smile.modeldemo.Memento.Sample.Main.main(null)
+            com.smile.modeldemo.Proxy.Sample.Main.main(null)
         }
     }
 

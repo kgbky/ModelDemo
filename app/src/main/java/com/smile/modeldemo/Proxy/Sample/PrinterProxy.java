@@ -32,7 +32,7 @@ public class PrinterProxy implements Printable {
         realize();
         //委托给real对象去完成
         real.print(string);
-    }
+        }
 
     private synchronized void realize() {   // 生成“本人”
         if (real == null) {
@@ -45,5 +45,9 @@ public class PrinterProxy implements Printable {
                 e.printStackTrace();
             }
         }
+    }
+
+    public void setReal(Printable real) {
+        this.real = real;
     }
 }
